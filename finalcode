@@ -1,0 +1,34 @@
+def isRNABaseComplementary(baseOne,baseTwo):
+    """Returns true if the 2 RNA bases are complementary."""
+	compBases = [["A", "U"], ["C","G"], ["G", "U"]]
+	for row in compBases:
+	if (baseOne==compBases[row][0] and baseTwo==compBases[row][1]) or (baseOne==compBases[row][1] and baseTwo==compBases[row][0]):
+        return True
+    else:
+        return False
+
+def SecondarySeq(RNA):
+    """RNA secondary sequence, returns
+    score."""
+    if len(RNA)<2:
+        return 0
+    else:
+        maxScore=SecondarySeq(RNA[1:])    
+        for i in range(1,len(RNA)): 
+            if isRNABaseComplementary(RNA[0],RNA[i]):
+                score=1+SecondarySeq(RNA[1:i])+SecondarySeq(RNA[(i+1):])
+                if score>maxScore:
+                    maxScore=score
+        return maxScore
+
+rnaseq_memo = []
+rnaseqScore_memo=[]
+def rnaSequenceMemoization(RNA):
+for row in rnaseq_memo:
+if equalSequence(rnaseq_memo[row],RNA)
+ return rnaseqScore_memo[row]
+
+best_score=SecondarySeq(RNA)
+rnaseqScore_memo.insert(best_score)
+rnaseq_memo.insert(RNA);
+return bestScore
